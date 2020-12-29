@@ -6,19 +6,19 @@ using UnityEngine.UI;
 public class ModelVisibilityTest : MonoBehaviour
 {
 	[SerializeField]
-	Button activeButton;
+	Button activeButton = null;
 
 	[SerializeField]
-	Button rendererButton;
+	Button rendererButton = null;
 
 	[SerializeField]
-	Button layerButton;
+	Button layerButton = null;
 
 	[SerializeField]
-	Button alphaButton;
+	Button alphaButton = null;
 
 	[SerializeField]
-	Button scaleButton;
+	Button scaleButton = null;
 
 	bool activeToggle = true;
 	bool rendererToggle = true;
@@ -31,6 +31,8 @@ public class ModelVisibilityTest : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        GetComponent<Animator>().keepAnimatorControllerStateOnDisable = true;
+
 		activeButton.onClick.AddListener(() =>
 		{
 			activeToggle = !activeToggle;
@@ -93,5 +95,5 @@ public class ModelVisibilityTest : MonoBehaviour
 	void SetAlpha(bool enable)
 	{
 		GetComponent<Renderer>().material.color = enable ? defaultColor : Color.clear;
-	}
+    }
 }
